@@ -3,9 +3,16 @@ const { rmSync } = require('fs')
 const send = require('send')
 const app = express() 
 const router = express.Router()
-const port = 3100 
+const port = 5100 
+const mongoose = require('mongoose')
 
 
+//몽고db 서버와 연결하기
+const CONNECT_URL = 'mongodb://127.0.0.1:27017/Book'
+
+mongoose.connect(CONNECT_URL)
+  .then(() => console.log('mongodb 연결됨..'))
+  .catch(e => console.log(`연결 실패: ${e}`))
 
 //현재 사용자의 도서목록 출력하기
 
